@@ -1,0 +1,33 @@
+{
+  "name": "flightio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "google-spreadsheet": "^2.0.6",
+    "googleapis": "^39.2.0",
+    "jalali-moment": "^3.3.10",
+    "joi": "^13.1.0",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "node-cron": "^3.0.0",
+    "nodemailer": "^6.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amirkh330/Flightio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amirkh330/Flightio/issues"
+  },
+  "homepage": "https://github.com/amirkh330/Flightio#readme"
+}
