@@ -9,7 +9,7 @@ const client = new google.auth.JWT(key.client_email, null, key.private_key, [
 ]);
 
 
-corn.schedule("00 59 21 * * 0-6", function () {
+corn.schedule("00 00 10 * * 0-6", function () {
   client.authorize(function (err, token) {
     if (err) {
       console.log(err);
@@ -21,15 +21,6 @@ corn.schedule("00 59 21 * * 0-6", function () {
   });
 });
 
-client.authorize(function (err, token) {
-  if (err) {
-    console.log(err);
-    return;
-  } else {
-    console.log("Connected :)");
-    getSheet(client);
-  }
-});
 
 async function getSheet(auth) {
   const gsapi = google.sheets({ version: "v4", auth: auth });
@@ -40,27 +31,14 @@ async function getSheet(auth) {
   };
 
   let res = await gsapi.spreadsheets.values.get(opt);
-
+  const expierdDate =moment().add(30, "day").format("L")
  
   res.data.values.map((item,index) => {
    
-const x=  moment.from(item[2], "fa", "YYYY/MM/DD").format("DD/MM/YYYY") 
-const y=  moment
-.from(item[2], "fa", "YYYY/MM/DD")
-.add(30, "day")
-.format("DD/MM/YYYY")
-
-
-console.log(!!moment(x).isAfter(moment([])));
-
- 
+const contarctDate=  moment.from(item[2], "fa", "YYYY/MM/DD").format("L") 
     
-    if (
-      moment.from(item[2], "fa", "YYYY/MM/DD").format("DD/MM/YYYY") <
-      moment
-        .from(item[2], "fa", "YYYY/MM/DD")
-        .add(30, "day")
-        .format("DD/MM/YYYY")
+    if (  
+      moment(expierdDate).isAfter(contarctDate)
     ) {
       console.log(item[2]);
       sendEmailTest(item[0]);
@@ -70,8 +48,3 @@ console.log(!!moment(x).isAfter(moment([])));
   });
 }
 
-// To Do List
-//.1 create email plat form              *DONE*
-//.2 send All Detail of sheet            *DONE*
-//.3 run funcation at 10:00 am           *DONE*
-//.4 run service worker on the hub

@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 
+
 const transporter = nodemailer.createTransport({
   service: "Gmail",
   auth: {
@@ -13,7 +14,7 @@ const transporter = nodemailer.createTransport({
 
 function sendEmailTest(item) {
   const mailOptions = {
-    from: "amir73khakbaz@gmail.com",
+    from: "flightiob2b@gmail.com",
     to: "mashhadi1353@gmail.com",
     subject: "هشدار اتمام تاریخ قرارداد",
     html: `<html>
@@ -177,7 +178,7 @@ function sendEmailTest(item) {
     if (error) {
       console.log(error);
     } else {
-      console.log("Email sent: " + item);
+      console.log("Email sent: " );
     }
   });
 }
